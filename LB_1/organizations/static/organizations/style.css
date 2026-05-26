@@ -1,0 +1,152 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #151922;
+    color: #e6e6e6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 28px;
+    background-color: #202631;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+h1 {
+    color: #f5f5f5;
+    margin-top: 0;
+}
+
+h2 {
+    color: #d6a85f;
+    margin-top: 32px;
+}
+
+p {
+    line-height: 1.5;
+}
+
+.card {
+    padding: 22px;
+    margin: 18px 0;
+    border: 1px solid #343d4d;
+    border-radius: 14px;
+    background-color: #29313f;
+}
+
+.card strong {
+    color: #ffffff;
+}
+
+.volunteers {
+    color: #d6a85f;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+a {
+    color: #e2b76d;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+a:hover {
+    color: #ffd58a;
+    text-decoration: underline;
+}
+
+.button,
+button {
+    display: inline-block;
+    margin: 10px 8px 10px 0;
+    padding: 11px 18px;
+    background-color: #d6a85f;
+    color: #171c25;
+    border: 1px solid #f0c777;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.button:hover,
+button:hover {
+    background-color: #f0c777;
+    color: #10131a;
+    text-decoration: none;
+}
+
+.delete {
+    background-color: #8f4b55;
+    color: #ffffff;
+    border-color: #b95e6b;
+}
+
+.delete:hover {
+    background-color: #b95e6b;
+    color: #ffffff;
+}
+
+form p {
+    display: grid;
+    grid-template-columns: 150px minmax(260px, 650px);
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+form p label {
+    text-align: right;
+    font-weight: 700;
+    color: #f1f1f1;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    background-color: #171c25;
+    color: #f1f1f1;
+    border: 1px solid #4d5a70;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 170px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #d6a85f;
+    box-shadow: 0 0 0 3px rgba(214, 168, 95, 0.15);
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #343d4d;
+}
+
+@media (max-width: 700px) {
+    .container {
+        margin: 20px;
+    }
+
+    form p {
+        display: block;
+    }
+
+    form p label {
+        display: block;
+        text-align: left;
+        margin-bottom: 8px;
+    }
+}

@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="{% static 'organizations/style.css' %}">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>{{ title }}</h1>
+
+        <p>
+            Організація:
+            <strong>{{ organization.name }}</strong>
+        </p>
+
+        <div class="card">
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button type="submit">
+                    Зберегти
+                </button>
+
+            </form>
+
+        </div>
+
+        <a href="{% url 'organization_detail' organization.id %}">
+            Назад до організації
+        </a>
+
+    </div>
+
+</body>
+</html>

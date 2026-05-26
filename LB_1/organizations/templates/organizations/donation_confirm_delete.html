@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Видалення збору</title>
+
+    <link rel="stylesheet" href="{% static 'organizations/style.css' %}">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Видалення збору пожертв</h1>
+
+        <div class="card">
+
+            <p>
+                Ви дійсно хочете видалити збір
+                <strong>{{ donation.title }}</strong>?
+            </p>
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                <button
+                    type="submit"
+                    class="delete"
+                >
+                    Так, видалити
+                </button>
+
+            </form>
+
+        </div>
+
+        <a href="{% url 'organization_detail' donation.organization.id %}">
+            Скасувати
+        </a>
+
+    </div>
+
+</body>
+</html>

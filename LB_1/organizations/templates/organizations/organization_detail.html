@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ organization.name }}</title>
+
+    <link rel="stylesheet" href="{% static 'organizations/style.css' %}">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>{{ organization.name }}</h1>
+
+        <p>{{ organization.description }}</p>
+
+        <p class="volunteers">
+            Кількість волонтерів:
+            {{ organization.volunteers_count }}
+        </p>
+
+        <h2>Ресурси</h2>
+
+        {% for resource in organization.resources.all %}
+            <div class="card">
+                <strong>{{ resource.name }}</strong>
+
+                <p>
+                    Кількість:
+                    {{ resource.quantity }}
+                </p>
+            </div>
+        {% endfor %}
+
+        <h2>Проєкти</h2>
+
+        {% for project in organization.projects.all %}
+            <div class="card">
+                <strong>{{ project.name }}</strong>
+
+                <p>{{ project.description }}</p>
+            </div>
+        {% endfor %}
+
+        <h2>Збори пожертв</h2>
+
+        <a
+            class="button"
+            href="{% url 'donation_create' organization.id %}"
+        >
+            Додати новий збір
+        </a>
+
+        {% for donation in organization.donation_campaigns.all %}
+
+            <div class="card">
+                <strong>{{ donation.title }}</strong>
+
+                <p>{{ donation.description }}</p>
+
+                <p>
+                    Зібрано:
+                    {{ donation.collected_amount }}
+                    грн із
+                    {{ donation.goal_amount }}
+                    грн
+                </p>
+
+                <a
+                    class="button"
+                    href="{% url 'donation_edit' donation.id %}"
+                >
+                    Редагувати
+                </a>
+
+                <a
+                    class="button delete"
+                    href="{% url 'donation_delete' donation.id %}"
+                >
+                    Видалити
+                </a>
+            </div>
+
+        {% endfor %}
+
+        <br>
+
+        <a href="/">
+            Назад до списку організацій
+        </a>
+
+    </div>
+
+</body>
+</html>
