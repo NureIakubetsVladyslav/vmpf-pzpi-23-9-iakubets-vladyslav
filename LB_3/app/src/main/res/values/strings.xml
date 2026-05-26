@@ -1,0 +1,23 @@
+<resources>
+
+    <string name="app_name">LB_3</string>
+
+    <string name="task_manager">Менеджер задач</string>
+
+    <string name="task_title_hint">Назва задачі</string>
+
+    <string name="task_description_hint">Опис задачі</string>
+
+    <string name="add_task">Додати задачу</string>
+
+    <string name="task_title">Назва задачі</string>
+
+    <string name="task_status">Статус</string>
+
+    <string name="details">Деталі</string>
+
+    <string name="edit">Редагувати</string>
+
+    <string name="delete">Видалити</string>
+
+</resources>
