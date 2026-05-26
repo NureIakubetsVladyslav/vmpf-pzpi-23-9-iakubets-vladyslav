@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Прогноз погоди</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #cfd8e3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .weather-card {
+        background: white;
+        width: 320px;
+        padding: 25px;
+        border-radius: 18px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 5px;
+      }
+
+      .city {
+        color: #666;
+        margin-bottom: 15px;
+      }
+
+      .temperature {
+        font-size: 42px;
+        font-weight: bold;
+        margin: 10px 0 5px;
+      }
+
+      .description {
+        font-size: 18px;
+        text-transform: capitalize;
+      }
+
+      img {
+        width: 90px;
+        height: 90px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="weather-card">
+      <h1>Прогноз погоди</h1>
+
+      <div class="city">Місто: Дніпро</div>
+
+      <div id="weather">Завантаження даних...</div>
+    </div>
+
+    <script>
+      function loadWeather() {
+        const apiKey = "ce23464ba887f665c636f01df310f005";
+
+        const city = "Dnipro";
+
+        const weatherBlock = document.getElementById("weather");
+
+        fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=ua`,
+        )
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(
+                "API-ключ ще не активований або введений неправильно",
+              );
+            }
+
+            return response.json();
+          })
+
+          .then((data) => {
+            const temperature = data.main.temp;
+
+            const description = data.weather[0].description;
+
+            const iconCode = data.weather[0].icon;
+
+            const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+            weatherBlock.innerHTML = `
+              <img src="${iconUrl}" alt="Іконка погоди">
+
+              <div class="temperature">
+                ${Math.round(temperature)} °C
+              </div>
+
+              <div class="description">
+                ${description}
+              </div>
+            `;
+          })
+
+          .catch((error) => {
+            weatherBlock.innerHTML = `<p>${error.message}</p>`;
+
+            console.log(error);
+          });
+      }
+
+      loadWeather();
+    </script>
+  </body>
+</html>
